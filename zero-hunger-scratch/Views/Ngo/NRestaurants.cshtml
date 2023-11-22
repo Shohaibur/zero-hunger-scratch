@@ -1,0 +1,42 @@
+﻿<h2>List of Restaurants and Donations</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Donation Id</th>
+            <th>Restaurant Name</th>
+            <th>Location</th>
+            <th>Food</th>
+            <th>Time</th>
+            <th>Contact</th>
+            <th>Action</th>
+            <!-- Add other headers as needed -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var restaurant in Model)
+        {
+            <tr>
+                <td>@restaurant.RestaurantDashboardId</td>
+                <td>@restaurant.RestaurantName</td>
+                <td>@restaurant.RestaurantLocation</td>
+                <td>@restaurant.SelectFood</td>
+                <td>@restaurant.ByTime</td>
+                <td>@restaurant.Contact</td>
+                <td>
+                    <form method="post" action="@Url.Action("NRestaurants", "Ngo")">
+                        <input type="hidden" name="RestaurantDashboardId" value="@restaurant.RestaurantDashboardId" />
+                        <input type="hidden" name="SelectedFood" value="@restaurant.SelectFood" />
+                        <input type="hidden" name="RestaurantName" value="@restaurant.RestaurantName" />
+                        <input type="hidden" name="ByTime" value="@restaurant.ByTime" />
+                        <input type="hidden" name="Contact" value="@restaurant.Contact" />
+                        <input type="hidden" name="RestaurantLocation" value="@restaurant.RestaurantLocation" />
+
+                        <button type="submit" class="btn btn-warning" name="Status" value="Collect">Collect</button>
+                    </form>
+                </td>
+              
+            </tr>
+        }
+    </tbody>
+</table>

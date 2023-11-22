@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Restaurant Dashboard";
+}
+
+
+<h1>Restaurant Dashboard</h1>
+
+<!--<form >-->
+@*<input type="hidden" name="Id" value="@Model.RestaurantId" />
+    <input type="text" name="Name" value="@Model.RestaurantName" />*@
+<!--<input type="hidden" name="RestaurantDashboardId" />
+    <input type="text" name="RestaurantName" />
+    <input type="submit" class="btn btn-warning" value="Send Food!" />
+
+</form>-->
+
+@if (Model != null)
+{
+    <form method="post" >
+        <table class="table">
+            <tr>
+                <th>Restaurant Name</th>
+                <td>@Model.RestaurantName</td>
+            </tr>
+            <tr>
+                <th>Location (Food pick up location)</th>
+                <td>@Model.RestaurantLocation</td>
+            </tr>
+            <tr>
+                <th>Insert Leftover Food Items</th>
+                <td><input type="text" name="SelectFood" value="@Model.SelectFood" /></td>
+            </tr>
+            <tr>
+                <th>Max. Preserve Time</th>
+                <td><input type="time" name="ByTime" value="@Model.ByTime" /></td>
+            </tr>
+            <tr>
+                <th>Contact Number</th>
+                <td><input type="number" name="Contact" value="@Model.Contact" placeholder="+8801xxxxxxxxx"/></td>
+            </tr>
+
+            <!-- Add more rows for additional details -->
+        </table>
+        <button type="submit" class="btn btn-warning">Donate Food!</button>
+    </form>
+        }
+        else
+        {
+        <p>Restaurant not found or does not exist.</p>
+        }

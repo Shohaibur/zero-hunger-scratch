@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Zero Hunger";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zero Hunger</title>
+    <style>
+        /* Centering the content */
+        .center-content {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* Style for the buttons */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="center-content">
+        <h1>Zero Hunger</h1>
+        <p>
+            Feeding the deprived is crucial in eradicating hunger. Help us in our mission to provide meals to those in need.
+        </p>
+        <div>
+
+            <a href="@Url.Action("Restaurant", "Create")" class="btn">Restaurant</a>
+            <a href="@Url.Action("Employee", "Home")" class="btn">Employee</a>
+        </div>
+    </div>
+</body>
+</html>
