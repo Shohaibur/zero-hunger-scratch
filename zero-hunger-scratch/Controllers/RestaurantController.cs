@@ -18,7 +18,7 @@ namespace zero_hunger_scratch.Controllers
         [HttpPost]
         public ActionResult Create(RestaurantDashboard r)
         {
-            var db = new zerohungerEntities();
+            var db = new zerohungerEntities1();
             db.RestaurantDashboards.Add(r);
             db.SaveChanges();
             return RedirectToAction("RestaurantDashboard", new {id=r.RestaurantDashboardId});
@@ -26,7 +26,7 @@ namespace zero_hunger_scratch.Controllers
         [HttpGet]
         public ActionResult RestaurantDashboard(int id)
         {
-            var db = new zerohungerEntities();
+            var db = new zerohungerEntities1();
             var data = db.RestaurantDashboards.Find(id);
 
                        
@@ -37,7 +37,7 @@ namespace zero_hunger_scratch.Controllers
         [HttpPost]
         public ActionResult RestaurantDashboard(int id, string SelectFood, TimeSpan ByTime,int Contact)
         {
-            var db = new zerohungerEntities();
+            var db = new zerohungerEntities1();
 
             // Find the restaurant based on the provided id
             var restaurant = db.RestaurantDashboards.Find(id);

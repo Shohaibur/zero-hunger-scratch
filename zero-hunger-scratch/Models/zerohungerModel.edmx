@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="zerohungerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="zerohungerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Employees">
           <Key>
             <PropertyRef Name="EmployeeId" />
@@ -12,10 +12,10 @@
           <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EmployeeName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Status" Type="varchar" MaxLength="50" />
-          <Property Name="RestaurantNGOEndId" Type="int" Nullable="false" />
+          <Property Name="RestaurantNGOEndId" Type="int" />
           <Property Name="AssignTime" Type="time" Precision="7" />
-          <Property Name="Location" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="RestaurantName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Location" Type="varchar" MaxLength="50" />
+          <Property Name="RestaurantName" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Panel">
           <Key>
@@ -64,7 +64,7 @@
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <Association Name="FK_Employees_RestaurantNGOEnd">
-          <End Role="RestaurantNGOEnd" Type="Self.RestaurantNGOEnd" Multiplicity="1" />
+          <End Role="RestaurantNGOEnd" Type="Self.RestaurantNGOEnd" Multiplicity="0..1" />
           <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="RestaurantNGOEnd">
@@ -99,37 +99,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="zerohungerModelStoreContainer">
           <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Panel" EntityType="Self.Panel" Schema="dbo" store:Type="Tables" />
@@ -149,7 +118,8 @@
             <End Role="RestaurantNGOEnd" EntitySet="RestaurantNGOEnd" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="zerohungerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -160,10 +130,10 @@
           <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EmployeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="RestaurantNGOEndId" Type="Int32" Nullable="false" />
+          <Property Name="RestaurantNGOEndId" Type="Int32" />
           <Property Name="AssignTime" Type="Time" Precision="7" />
-          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="RestaurantName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RestaurantName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="RestaurantNGOEnd" Relationship="Self.FK_Employees_RestaurantNGOEnd" FromRole="Employees" ToRole="RestaurantNGOEnd" />
           <NavigationProperty Name="Panels" Relationship="Self.FK_Panel_Employees" FromRole="Employees" ToRole="Panel" />
         </EntityType>
@@ -189,8 +159,8 @@
           <Property Name="SelectFood" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ByTime" Type="Time" Precision="7" />
           <Property Name="RestaurantLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="RestaurantNGOEnds" Relationship="Self.FK_RestaurantNGOEnd_RestaurantDashboards1" FromRole="RestaurantDashboards" ToRole="RestaurantNGOEnd" />
           <Property Name="Contact" Type="Int32" />
+          <NavigationProperty Name="RestaurantNGOEnds" Relationship="Self.FK_RestaurantNGOEnd_RestaurantDashboards1" FromRole="RestaurantDashboards" ToRole="RestaurantNGOEnd" />
         </EntityType>
         <EntityType Name="RestaurantNGOEnd">
           <Key>
@@ -202,10 +172,10 @@
           <Property Name="SelectedFood" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ByTime" Type="Time" Nullable="false" Precision="7" />
           <Property Name="RestaurantLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contact" Type="Int32" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_RestaurantNGOEnd" FromRole="RestaurantNGOEnd" ToRole="Employees" />
           <NavigationProperty Name="RestaurantDashboard" Relationship="Self.FK_RestaurantNGOEnd_RestaurantDashboards1" FromRole="RestaurantNGOEnd" ToRole="RestaurantDashboards" />
-          <Property Name="Contact" Type="Int32" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -218,7 +188,7 @@
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_Employees_RestaurantNGOEnd">
-          <End Role="RestaurantNGOEnd" Type="Self.RestaurantNGOEnd" Multiplicity="1" />
+          <End Role="RestaurantNGOEnd" Type="Self.RestaurantNGOEnd" Multiplicity="0..1" />
           <End Role="Employees" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="RestaurantNGOEnd">
@@ -253,7 +223,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="zerohungerEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="zerohungerEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Employees" EntityType="Self.Employee" />
           <EntitySet Name="Panels" EntityType="Self.Panel" />
           <EntitySet Name="RestaurantDashboards" EntityType="Self.RestaurantDashboard" />
@@ -271,54 +241,13 @@
             <End Role="RestaurantDashboards" EntitySet="RestaurantDashboards" />
             <End Role="RestaurantNGOEnd" EntitySet="RestaurantNGOEnds" />
           </AssociationSet>
-          <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(zerohungerModel.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(zerohungerModel.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="new_diagramname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="zerohungerModelStoreContainer" CdmEntityContainer="zerohungerEntities">
+        <EntityContainerMapping StorageEntityContainer="zerohungerModelStoreContainer" CdmEntityContainer="zerohungerEntities1">
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="zerohungerModel.Employee">
               <MappingFragment StoreEntitySet="Employees">
@@ -348,25 +277,25 @@
           <EntitySetMapping Name="RestaurantDashboards">
             <EntityTypeMapping TypeName="zerohungerModel.RestaurantDashboard">
               <MappingFragment StoreEntitySet="RestaurantDashboards">
-                <ScalarProperty Name="Contact" ColumnName="Contact" />
                 <ScalarProperty Name="RestaurantDashboardId" ColumnName="RestaurantDashboardId" />
                 <ScalarProperty Name="RestaurantName" ColumnName="RestaurantName" />
                 <ScalarProperty Name="SelectFood" ColumnName="SelectFood" />
                 <ScalarProperty Name="ByTime" ColumnName="ByTime" />
                 <ScalarProperty Name="RestaurantLocation" ColumnName="RestaurantLocation" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RestaurantNGOEnds">
             <EntityTypeMapping TypeName="zerohungerModel.RestaurantNGOEnd">
               <MappingFragment StoreEntitySet="RestaurantNGOEnd">
-                <ScalarProperty Name="Contact" ColumnName="Contact" />
                 <ScalarProperty Name="RestaurantNGOEndId" ColumnName="RestaurantNGOEndId" />
                 <ScalarProperty Name="RestaurantDashboardId" ColumnName="RestaurantDashboardId" />
                 <ScalarProperty Name="RestaurantName" ColumnName="RestaurantName" />
                 <ScalarProperty Name="SelectedFood" ColumnName="SelectedFood" />
                 <ScalarProperty Name="ByTime" ColumnName="ByTime" />
                 <ScalarProperty Name="RestaurantLocation" ColumnName="RestaurantLocation" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -382,30 +311,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="zerohungerModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="zerohungerModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="zerohungerModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="zerohungerModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="zerohungerModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="zerohungerModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="zerohungerModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="zerohungerModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="zerohungerModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -129,6 +129,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NgoController.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
@@ -145,12 +146,6 @@
       <DependentUpon>zerohungerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RestaurantNGOEnd.cs">
-      <DependentUpon>zerohungerModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>zerohungerModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagrams_Result.cs">
       <DependentUpon>zerohungerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
@@ -245,6 +240,7 @@
     <Content Include="Views\Restaurant\RestaurantDashboard.cshtml" />
     <Content Include="Views\Restaurant\Confirmed.cshtml" />
     <Content Include="Views\Ngo\NRestaurants.cshtml" />
+    <Content Include="Views\Employee\EmpIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

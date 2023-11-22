@@ -26,8 +26,8 @@ namespace zero_hunger_scratch.Models
         public string SelectedFood { get; set; }
         public System.TimeSpan ByTime { get; set; }
         public string RestaurantLocation { get; set; }
-        public string Status { get; set; }
         public Nullable<int> Contact { get; set; }
+        public string Status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employees { get; set; }

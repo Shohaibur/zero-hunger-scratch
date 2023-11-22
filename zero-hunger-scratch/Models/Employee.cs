@@ -23,7 +23,7 @@ namespace zero_hunger_scratch.Models
         public int EmployeeId { get; set; }
         public string EmployeeName { get; set; }
         public string Status { get; set; }
-        public int RestaurantNGOEndId { get; set; }
+        public Nullable<int> RestaurantNGOEndId { get; set; }
         public Nullable<System.TimeSpan> AssignTime { get; set; }
         public string Location { get; set; }
         public string RestaurantName { get; set; }

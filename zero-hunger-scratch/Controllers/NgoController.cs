@@ -8,7 +8,7 @@ namespace zero_hunger_scratch.Controllers
 {
     public class NgoController : Controller
     {
-        private readonly zerohungerEntities db = new zerohungerEntities();
+        private readonly zerohungerEntities1 db = new zerohungerEntities1();
 
         // GET: Ngo
         public ActionResult NRestaurants()
@@ -20,7 +20,7 @@ namespace zero_hunger_scratch.Controllers
         [HttpPost]
         public ActionResult NRestaurants(RestaurantNGOEnd e)
         {
-            var db = new zerohungerEntities();
+            var db = new zerohungerEntities1();
 
             // Create a new instance of the other model
             var data = new RestaurantNGOEnd()
