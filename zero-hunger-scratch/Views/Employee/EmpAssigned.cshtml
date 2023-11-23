@@ -1,0 +1,29 @@
+﻿@model IEnumerable<zero_hunger_scratch.Models.Employee>
+
+<h2>Employees</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Employee Id</th>
+            <th>Employee Name</th>
+            <th>Status</th>
+            <th>Assigned Restaurant</th>
+            <th>Location</th>
+            <th>Assign Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.EmployeeId)</td>
+                <td>@Html.DisplayFor(modelItem => item.EmployeeName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                <td>@Html.DisplayFor(modelItem => item.RestaurantName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Location)</td>
+                <td>@Html.DisplayFor(modelItem => item.AssignTime)</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -42,7 +42,7 @@ namespace zero_hunger_scratch.Controllers
             db.SaveChanges();
 
             // Redirect to the same action or another action as needed
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("EmpIndex","Employee");
         }
 
     }

@@ -241,6 +241,7 @@
     <Content Include="Views\Restaurant\Confirmed.cshtml" />
     <Content Include="Views\Ngo\NRestaurants.cshtml" />
     <Content Include="Views\Employee\EmpIndex.cshtml" />
+    <Content Include="Views\Employee\EmpAssigned.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

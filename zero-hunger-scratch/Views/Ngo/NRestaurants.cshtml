@@ -24,7 +24,7 @@
                 <td>@restaurant.ByTime</td>
                 <td>@restaurant.Contact</td>
                 <td>
-                    <form method="post" action="@Url.Action("NRestaurants", "Ngo")">
+                    <form method="post">
                         <input type="hidden" name="RestaurantDashboardId" value="@restaurant.RestaurantDashboardId" />
                         <input type="hidden" name="SelectedFood" value="@restaurant.SelectFood" />
                         <input type="hidden" name="RestaurantName" value="@restaurant.RestaurantName" />
