@@ -22,10 +22,10 @@ namespace zero_hunger_scratch.Controllers
         {
             var db = new zerohungerEntities1();
 
-            // Create a new instance of the other model
+           
             var data = new RestaurantNGOEnd()
             {
-                // Set the properties of the other model with the values from the form
+              
                 RestaurantDashboardId =e.RestaurantDashboardId,
                 RestaurantName = e.RestaurantName,
                 SelectedFood = e.SelectedFood,
@@ -35,13 +35,13 @@ namespace zero_hunger_scratch.Controllers
                 
             };
 
-            // Add the new instance to the corresponding DbSet
+          
             db.RestaurantNGOEnds.Add(data);
 
-            // Save the changes to the database
+        
             db.SaveChanges();
 
-            // Redirect to the same action or another action as needed
+        
             return RedirectToAction("EmpIndex","Employee");
         }
 

@@ -39,18 +39,18 @@ namespace zero_hunger_scratch.Controllers
         {
             var db = new zerohungerEntities1();
 
-            // Find the restaurant based on the provided id
+           
             var restaurant = db.RestaurantDashboards.Find(id);
 
-            // Update the SelectFood and ByTime properties with the values from the form
+          
             restaurant.SelectFood = SelectFood;
             restaurant.ByTime = ByTime;
             restaurant.Contact = Contact;
 
-            // Save changes to the database
+
             db.SaveChanges();
 
-            // Redirect to the same action or another action as needed
+          
             return RedirectToAction("Confirmed");
         }
         public ActionResult Confirmed()
